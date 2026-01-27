@@ -1,7 +1,9 @@
 package io.github.Ital023.EcommerceItalo.controller.dto;
 
-public record CreateUserDto(String fullName,
-                            String address,
-                            String number,
+import jakarta.validation.constraints.NotBlank;
+
+public record CreateUserDto(@NotBlank String fullName,
+                            @NotBlank String address,
+                            @NotBlank String number,
                             String complement) {
 }
