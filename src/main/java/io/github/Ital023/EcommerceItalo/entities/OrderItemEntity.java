@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 @Table(name = "tb_order_item")
 public class OrderItemEntity {
 
+    @EmbeddedId
+    private OrderItemId id;
+
     @Column(name = "sale_price")
     private BigDecimal salePrice;
 
