@@ -9,7 +9,7 @@ public class OrderItemId {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private OrderItemEntity order;
+    private OrderEntity order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -18,11 +18,11 @@ public class OrderItemId {
     public OrderItemId() {
     }
 
-    public OrderItemEntity getOrder() {
+    public OrderEntity getOrder() {
         return order;
     }
 
-    public void setOrder(OrderItemEntity order) {
+    public void setOrder(OrderEntity order) {
         this.order = order;
     }
 

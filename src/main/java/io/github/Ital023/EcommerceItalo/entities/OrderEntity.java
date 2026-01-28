@@ -25,7 +25,7 @@ public class OrderEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @OneToMany(mappedBy = "id.order")
+    @OneToMany(mappedBy = "id.order", cascade = CascadeType.ALL)
     private List<OrderItemEntity> items;
 
     public OrderEntity() {
