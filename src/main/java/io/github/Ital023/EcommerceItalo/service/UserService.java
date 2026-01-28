@@ -7,6 +7,9 @@ import io.github.Ital023.EcommerceItalo.repository.BillingAddressRepository;
 import io.github.Ital023.EcommerceItalo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class UserService {
 
@@ -32,6 +35,22 @@ public class UserService {
         user.setBillingAddress(savedBillingAddress);
 
         return userRepository.save(user);
+    }
+
+
+    public Optional<UserEntity> findById(UUID userId) {
+        return userRepository.findById(userId);
+    }
+
+    public boolean deleteById(UUID userId) {
+        var user = userRepository.findById(userId);
+
+        if(user.isPresent()) {
+            userRepository.deleteById(userId);
+            billingAddressRepository.deleteById(user.get().getBillingAddress().getBillingAddressId());
+        }
+
+        return user.isPresent();
     }
 
 
