@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_orders")
@@ -19,6 +20,13 @@ public class OrderEntity {
 
     @Column(name = "order_date")
     private LocalDateTime orderDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    @OneToMany(mappedBy = "id.order")
+    private List<OrderItemEntity> items;
 
     public OrderEntity() {
     }
@@ -45,5 +53,21 @@ public class OrderEntity {
 
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public List<OrderItemEntity> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItemEntity> items) {
+        this.items = items;
     }
 }
